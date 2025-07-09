@@ -1,0 +1,356 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteDim: hsl(0, 0%, 95%);
+  --greyText: rgb(150, 150, 150);
+  --cardBG: rgb(250, 250, 255);
+  --cardHover: rgb(255, 255, 255);
+  --shadowLight: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.detailsPage {
+  padding: 8rem 1rem 2rem;
+  background: var(--whiteDim);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeInUp 0.6s ease-in;
+  position: relative;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.backBtn {
+  position: fixed;
+  top: 5rem;
+  left: 1rem;
+  background: var(--PrimaryColor);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 999;
+  transition: 0.3s ease;
+  box-shadow: var(--shadowLight);
+
+  &:hover {
+    background: var(--SecondaryColor);
+    transform: translateY(-2px);
+  }
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  background: var(--cardBG);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadowLight);
+  gap: 1.5rem;
+  margin-top: 20px;
+  
+
+  .imagesSection {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      max-height: 320px;
+      border-radius: 10px;
+      object-fit: cover;
+      animation: fadeSlide 0.4s ease;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 5;
+      transition: background 0.3s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      &.left {
+        left: 10px;
+      }
+
+      &.right {
+        right: 10px;
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--blackColor);
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: var(--textColor);
+    }
+
+    .detailsRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+
+        .label {
+          font-weight: 600;
+          color: var(--PrimaryColor);
+          margin-bottom: 4px;
+        }
+
+        .value {
+          color: var(--blackColor);
+        }
+      }
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--textColor);
+      margin-top: 1rem;
+      animation: fadeIn 0.4s ease-in;
+    }
+  }
+}
+
+/* Reusable Utility */
+.button {
+  background: var(--PrimaryColor);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: var(--SecondaryColor);
+  }
+}
+
+.gap-sm {
+  gap: 0.5rem;
+}
+.gap-lg {
+  gap: 2rem;
+}
+.center-x {
+  display: flex;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .detailsPage {
+    padding-top: 7rem;
+  }
+
+  .detailsContainer {
+    .detailsRow {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .imagesSection .arrow {
+      font-size: 1.5rem;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .info .title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .backBtn {
+    top: 4.5rem;
+    left: 0.8rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .detailsPage {
+    padding: 3rem 5rem;
+  }
+
+  .detailsContainer {
+    flex-direction: row;
+
+    .imagesSection {
+      flex: 1;
+      max-height: 400px;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .info {
+      flex: 1;
+      padding-left: 2rem;
+    }
+
+    .info .title {
+      font-size: 2rem;
+    }
+  }
+}
+.formOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.formContainer {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadowLight);
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeInUp 0.4s ease;
+
+  h3 {
+    margin-bottom: 0.5rem;
+    color: var(--PrimaryColor);
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input,
+    textarea {
+      padding: 0.7rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+
+      &:focus {
+        border-color: var(--PrimaryColor);
+      }
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: none;
+    }
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+    background: var(--PrimaryColor);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+
+    &:hover {
+      background: var(--SecondaryColor);
+    }
+  }
+
+  .cancelBtn {
+    background: #ddd;
+    color: #333;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background: #bbb;
+    }
+  }
+
+  .thankYou {
+    text-align: center;
+
+    h4 {
+      color: var(--PrimaryColor);
+    }
+  }
+}

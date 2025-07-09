@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import './app.css';
 
-function App() {
+import Navbar from './Components/Navbar/Navbar';
+import Home from './Components/Home/Home';
+import Footer from './Components/Footer/Footer';
+
+// Pages
+import Treks from './pages/treks';
+import Community from './pages/community';
+import Challenges from './pages/challenges';
+import Auth from './pages/auth';
+import Details from './pages/details'; // ✅ Import Details Page
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/treks" element={<Treks />} />
+        <Route path="/treks/:id" element={<Details />} /> {/* ✅ Details Route */}
+        <Route path="/community" element={<Community />} />
+        <Route path="/challenges" element={<Challenges />} />
+        <Route path="/auth" element={<Auth />} />
+        {/* Optional: <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;

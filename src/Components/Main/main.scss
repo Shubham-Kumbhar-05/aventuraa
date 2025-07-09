@@ -1,0 +1,191 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.main {
+  width: 100%;
+
+  .secTitle {
+    .title {
+      position: relative;
+      width: max-content;
+      color: var(--textColor);
+      margin: 1rem 0;
+      z-index: 2;
+
+      &::after {
+        position: absolute;
+        content: '';
+        background: var(--SecondaryColor);
+        height: 5px;
+        width: 120px;
+        right: 0;
+        bottom: 5px;
+        z-index: 1;
+      }
+    }
+  }
+
+  .secContent {
+    display: grid;
+    justify-content: center;
+    gap: 1.5rem;
+
+    .singleDestination {
+      display: grid;
+      row-gap: 10px;
+      padding: 1rem;
+      border-radius: 10px;
+      background: var(--cardBG);
+      box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+      overflow: hidden;
+      transition: 0.3s ease;
+
+      &:hover {
+        background: var(--cardHover);
+        box-shadow: 0 4px 8px rgba(85, 85, 114, 0.3);
+      }
+
+      .imageDiv {
+        position: relative;
+        height: 200px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+
+        .arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.7);
+          border: none;
+          padding: 8px 12px;
+          font-size: 20px;
+          cursor: pointer;
+          border-radius: 50%;
+          z-index: 2;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 1);
+          }
+
+          &.left {
+            left: 10px;
+          }
+
+          &.right {
+            right: 10px;
+          }
+        }
+      }
+
+      .cardInfo {
+        padding: 1rem 0;
+
+        .destTitle {
+          color: var(--blackColor);
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+
+        .continent {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+
+          .icon {
+            color: var(--textColor);
+            font-size: 18px;
+          }
+
+          .name {
+            color: var(--textColor);
+            font-weight: 400;
+            font-size: 14px;
+          }
+        }
+
+        .desc {
+          font-size: 13.5px;
+          color: var(--textColor);
+          font-weight: 500;
+        }
+
+        .btn {
+          margin-top: 1rem;
+          padding: 0.6rem 1.2rem;
+          background: var(--gradientColor);
+          border: none;
+          border-radius: 10px;
+          color: var(--whiteColor);
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background: var(--SecondaryColor);
+          }
+
+          .icon {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive styles */
+
+@media screen and (min-width: 500px) {
+  .main {
+    .secTitle {
+      .title {
+        font-size: 1.5rem;
+
+        &::after {
+          width: 155px !important;
+        }
+      }
+    }
+
+    .secContent {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (min-width: 840px) {
+  .main {
+    .secContent {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
