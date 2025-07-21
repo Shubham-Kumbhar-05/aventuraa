@@ -12,6 +12,17 @@
   --shadowLight: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+body.dark {
+  --whiteColor: #2c2c2c;
+  --blackColor: #f5f5f5;
+  --textColor: #f5f5f5;
+  --whiteDim: #1e1e1e;
+  --greyText: #999;
+  --cardBG: #2e2e2e;
+  --cardHover: #383838;
+  --shadowLight: 0 4px 12px rgba(255, 255, 255, 0.08);
+}
+
 .detailsPage {
   padding: 8rem 1rem 2rem;
   background: var(--whiteDim);
@@ -55,7 +66,6 @@
   box-shadow: var(--shadowLight);
   gap: 1.5rem;
   margin-top: 20px;
-  
 
   .imagesSection {
     position: relative;
@@ -269,6 +279,7 @@
     }
   }
 }
+
 .formOverlay {
   position: fixed;
   inset: 0;
@@ -280,7 +291,7 @@
 }
 
 .formContainer {
-  background: white;
+  background: var(--cardBG);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: var(--shadowLight);
@@ -309,6 +320,8 @@
       border-radius: 8px;
       font-size: 1rem;
       outline: none;
+      background: var(--whiteColor);
+      color: var(--textColor);
 
       &:focus {
         border-color: var(--PrimaryColor);
@@ -337,12 +350,12 @@
   }
 
   .cancelBtn {
-    background: #ddd;
-    color: #333;
+    background: #bbb;
+    color: #222;
     margin-top: 0.5rem;
 
     &:hover {
-      background: #bbb;
+      background: #999;
     }
   }
 

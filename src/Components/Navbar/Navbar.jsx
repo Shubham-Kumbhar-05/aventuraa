@@ -7,26 +7,43 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [active, setActive] = useState('navBar');
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState(null);
   const navigate = useNavigate();
 
-  // Load user from localStorage on mount
+  // Load user and role from localStorage
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    setUser(storedUser);
+    const loadUser = () => {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      const googleUser = JSON.parse(localStorage.getItem('googleUser'));
+      const storedRole = localStorage.getItem('role')?.toLowerCase().trim() || 'user';
+
+      if (googleUser) {
+        setUser({ ...googleUser, isGoogle: true });
+      } else if (storedUser) {
+        setUser({ ...storedUser, isGoogle: false });
+      } else {
+        setUser(null);
+      }
+
+      setRole(storedRole);
+    };
+
+    loadUser();
+
+    // Update user automatically on storage change (in case of sign out from another tab)
+    window.addEventListener('storage', loadUser);
+    return () => window.removeEventListener('storage', loadUser);
   }, []);
 
-  const showNav = () => {
-    setActive('navBar activeNavbar');
-  };
+  const showNav = () => setActive('navBar activeNavbar');
+  const removeNavbar = () => setActive('navBar');
 
-  const removeNavbar = () => {
-    setActive('navBar');
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-    navigate('/auth');
+  const handleUsernameClick = () => {
+    if (role === 'admin') {
+      navigate('/admin');
+    } else {
+      navigate('/account');
+    }
   };
 
   return (
@@ -59,8 +76,15 @@ const Navbar = () => {
               </button>
             ) : (
               <li className="navItem userTab">
-                <span className="username">👤 {user?.Username || user?.username}</span>
-                <button className="btn logoutBtn" onClick={handleLogout}>Logout</button>
+                <span
+                  className="username"
+                  onClick={handleUsernameClick}
+                  style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                  title={role === 'admin' ? 'Go to Admin Dashboard' : 'Go to Your Account'}
+                >
+                  👤{' '}
+                  {user.displayName || user.fullName || user.Username || user.username || 'User'}
+                </span>
               </li>
             )}
           </ul>

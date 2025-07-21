@@ -1,0 +1,91 @@
+.account-page {
+  max-width: 500px;
+  margin: 7rem auto 3rem;
+  padding: 8rem 1rem 2rem;
+  background: var(--cardBG);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--textColor);
+  animation: fadeInUp 0.4s ease-in;
+  margin-top: 0px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--PrimaryColor);
+}
+
+.user-details {
+  margin-bottom: 1.5rem;
+
+  p {
+    font-size: 1rem;
+    margin: 0.8rem 0;
+
+    strong {
+      color: var(--PrimaryColor);
+      margin-right: 5px;
+    }
+  }
+}
+
+.theme-toggle {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--textColor);
+
+    select {
+      margin-left: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--inputColor);
+      border-radius: 6px;
+      font-size: 1rem;
+      background: var(--whiteColor);
+      color: var(--textColor);
+      outline: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+
+      &:focus {
+        border-color: var(--PrimaryColor);
+      }
+    }
+  }
+}
+
+.signout-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #c62828;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

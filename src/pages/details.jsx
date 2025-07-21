@@ -13,7 +13,11 @@ const Details = () => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: '', contact: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
 
   const handleNext = () => {
     setCurrentImgIndex(prev =>
@@ -42,12 +46,13 @@ const Details = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz6q2UIVgiMCRdXQCSoYeAPIASAU5PviO3X2UE5A2nRpxSmDeHEICib7LioWa7tIb5z/exec'; // ← Replace this with your URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzHreFHW3Y5iNqPzFdZp0odtYW2f3LcU7Hb0RfAGRo1U8MQqk61ZrCseE98gnFQ4P9FDw/exec'; // ✅ Booking script
 
     const formBody = new URLSearchParams();
     formBody.append('name', formData.name);
-    formBody.append('contact', formData.contact);
-    formBody.append('message', formData.message);
+    formBody.append('trip', trek.destTitle);  // ✅ Sending trip name
+    formBody.append('email', formData.email);
+    formBody.append('phone', formData.phone);
 
     try {
       await fetch(scriptURL, {
@@ -59,7 +64,7 @@ const Details = () => {
 
       setTimeout(() => {
         setShowForm(false);
-        setFormData({ name: '', contact: '', message: '' });
+        setFormData({ name: '', email: '', phone: '' });
         setSubmitted(false);
       }, 3000);
     } catch (error) {
@@ -131,17 +136,18 @@ const Details = () => {
                       required
                     />
                     <input
-                      type="text"
-                      name="contact"
-                      placeholder="Email or Phone"
-                      value={formData.contact}
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      value={formData.email}
                       onChange={handleInputChange}
                       required
                     />
-                    <textarea
-                      name="message"
-                      placeholder="Message"
-                      value={formData.message}
+                    <input
+                      type="text"
+                      name="phone"
+                      placeholder="Your Phone Number"
+                      value={formData.phone}
                       onChange={handleInputChange}
                       required
                     />
@@ -152,7 +158,7 @@ const Details = () => {
               ) : (
                 <div className="thankYou">
                   <h4>Thank you!</h4>
-                  <p>Our team will contact you soon.</p>
+                  <p>Your booking has been submitted.</p>
                 </div>
               )}
             </motion.div>

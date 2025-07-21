@@ -1,182 +1,187 @@
 :root {
-    --PrimaryColor: hsl(199, 100%, 33%);
-    --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(201, 33%, 16%);
-    --textColor: hsl(240, 4%, 36%);
-    --whiteColorDeam: hsl(0, 0%, 93%);
-    --greyText: rgb(190, 190, 190);
-    --inputColor: rgb(239, 239, 239);
-    --bodyColor: rgb(240, 240, 246);
-    --cardBG: rgb(225, 225, 235);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
 }
 
-.OverFlowHome{
+body.dark {
+  --whiteColor: #2c2c2c;
+  --blackColor: #f5f5f5;
+  --textColor: #f5f5f5;
+  --bodyColor: #1e1e1e;
+  --cardBG: #2e2e2e;
+  --inputColor: #444;
+}
+
+.OverFlowHome {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(47, 106, 127, 0.144);
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    mix-blend-mode: hard-light;
+  }
+
+  video {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+  }
+
+  .homeContent {
     width: 100%;
     height: 100%;
-    position: relative;
+    padding: 8rem 1.5rem 3rem;
+    display: flex;
+    row-gap: 3rem;
     flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
-.home{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     margin: auto;
+    color: var(--textColor);
+    z-index: 100;
 
-    .overlay{
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(47, 106, 127, 0.144);
-        top: 0;
-        bottom: 0;
-        z-index: 1;
-        mix-blend-mode: hard-light;
-    }
+    .textDiv {
+      padding: 1rem 0;
 
-    video{
-        position:absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        bottom: 0;
-        object-fit: cover;
-    }
+      .smallText {
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--textColor);
+      }
 
-    .homeContent{
-        width: 100%;
-        height: 100%;
-        padding: 8rem 1.5rem 3rem;
-        display: flex;
-        row-gap: 3rem;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        margin: auto;
+      .homeTitle {
         color: var(--whiteColor);
-        z-index: 100;
+        position: relative;
+        font-size: 50px;
+      }
+    }
 
-        .textDiv{
-            padding: 1rem 0;
+    .homeFooterIcons {
+      width: 100%;
+      justify-content: space-between;
 
-            .smallText{
-                font-size: 13px;
-                text-transform: uppercase;
-            }
+      .icon {
+        font-size: 20px;
+        margin: 0 5px;
+        color: var(--whiteColor);
+        font-weight: 600;
 
-            .homeTitle{
-                color:rgb(255, 255, 255);
-                position: relative;
-                font-size: 50px;
-                }
+        &:hover {
+          color: var(--PrimaryColor);
         }
-
-        
-
-        .homeFooterIcons{
-            width: 100%;
-            justify-content: space-between;
-
-            .icon{
-                font-size: 20px;
-                margin: 0 5px;
-                color: var(--whiteColor);
-                font-weight: 600;
-
-                &:hover{
-                    color: var(--PrimaryColor);
-                }
-            }
-        }
-    }    
+      }
+    }
+  }
 }
 
-@media screen and (min-width: 500px){
-    .home{
-        .homeContent{
-            .textDiv{
-                .smallText{
-                    font-size: 16px;
-                }
-
-                .homeTitle{
-                    position: relative;
-                    font-size: 2.3rem ;
-                    width: max-content;
-
-                    &::after{
-                        position: absolute;
-                        content: '';
-                        background: var(--SecondaryColor);
-                        
-                        height: 5px;
-                        width: 145px;
-                        right: 0px;
-                        bottom: 5px;
-                        z-index: -1;
-                    }
-                }
-            }
-
-            .cardDiv{
-                grid-template-columns: repeat(2,1fr);
-            }
+@media screen and (min-width: 500px) {
+  .home {
+    .homeContent {
+      .textDiv {
+        .smallText {
+          font-size: 16px;
         }
+
+        .homeTitle {
+          position: relative;
+          font-size: 2.3rem;
+          width: max-content;
+
+          &::after {
+            position: absolute;
+            content: '';
+            background: var(--SecondaryColor);
+            height: 5px;
+            width: 145px;
+            right: 0px;
+            bottom: 5px;
+            z-index: -1;
+          }
+        }
+      }
+
+      .cardDiv {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
+  }
 }
 
-@media screen and (min-width: 600px){
-    .home{
-        .homeContent{
-            .cardDiv{
-                padding: 2rem 1rem;
-                grid-template-columns: repeat(3,1fr);
-            }
-        }
+@media screen and (min-width: 600px) {
+  .home {
+    .homeContent {
+      .cardDiv {
+        padding: 2rem 1rem;
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
+  }
 }
 
-@media screen and (min-width: 940px){
-    .home{
-        height: 85vh;
-    }
+@media screen and (min-width: 940px) {
+  .home {
+    height: 85vh;
+  }
 }
 
-@media screen and (min-width: 1240px){
-    .home{
-        height: 80vh;
+@media screen and (min-width: 1240px) {
+  .home {
+    height: 80vh;
 
-        .homeContent{
-            padding-left: 0;
-            padding-right: 0;
+    .homeContent {
+      padding-left: 0;
+      padding-right: 0;
 
-            .cardDiv{
-                padding: 2rem 1rem;
-                grid-template-columns: repeat(3,1fr);
+      .cardDiv {
+        padding: 2rem 1rem;
+        grid-template-columns: repeat(3, 1fr);
 
-                .input{
-                    margin-bottom: 1rem;
-                }
-
-                .searchOptions{
-                    bottom: -1;
-                    padding: 8px 1rem;
-
-                    span{
-                        font-size: 17px;
-                    }
-                }
-            }
+        .input {
+          margin-bottom: 1rem;
         }
+
+        .searchOptions {
+          bottom: -1;
+          padding: 8px 1rem;
+
+          span {
+            font-size: 17px;
+          }
+        }
+      }
     }
+  }
 }

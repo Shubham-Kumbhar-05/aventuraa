@@ -27,8 +27,6 @@
     color: var(--blackColor);
     font-weight: 600;
     cursor: pointer;
-    align-items: center;
-    justify-content: center;
 
     .icon {
       font-size: 25px;
@@ -224,5 +222,60 @@
 @media screen and (min-width: 1240px) {
   .header {
     padding: 1rem 8.5rem;
+  }
+}
+
+/* 🌙 Dark Mode Support */
+body.dark {
+  .header {
+    background: #1e1e1e;
+
+    .logo {
+      color: #ffffff;
+
+      .icon {
+        color: var(--SecondaryColor);
+      }
+    }
+
+    .navBar {
+      background: #2c2c2c;
+
+      .navLists {
+        .navItem {
+          .navLink {
+            color: #f0f0f0;
+
+            &:hover {
+              color: var(--SecondaryColor);
+            }
+          }
+        }
+
+        .userTab {
+          .username {
+            color: #e0e0e0;
+          }
+
+          .logoutBtn {
+            background: var(--SecondaryColor);
+
+            &:hover {
+              background: var(--PrimaryColor);
+            }
+          }
+        }
+      }
+
+      .closeNavbar {
+        color: var(--SecondaryColor);
+      }
+    }
+
+    .toggleNavbar {
+      .icon {
+        color: var(--SecondaryColor);
+      }
+    }
   }
 }

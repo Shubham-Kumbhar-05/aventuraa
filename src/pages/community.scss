@@ -1,12 +1,39 @@
+:root {
+  --about-bg-light: linear-gradient(to right, #e0eafc, #cfdef3);
+  --about-bg-dark: linear-gradient(to right, #1e1e1e, #121212);
+  --about-text: #1e3d59;
+  --about-heading: #0a3d62;
+  --about-subtext: #4b6584;
+  --about-content: #333;
+  --about-box-bg: rgba(0, 0, 0, 0.05);
+  --about-box-hover: rgba(72, 239, 239, 0.1);
+  --about-contact-link: #0984e3;
+  --about-white: rgba(255, 255, 255, 0.95);
+  --about-value-title: #2563eb;
+}
+
+body.dark {
+  --about-bg-light: var(--about-bg-dark);
+  --about-text: #f1f1f1;
+  --about-heading: #66ccff;
+  --about-subtext: #aaa;
+  --about-content: #ccc;
+  --about-box-bg: rgba(255, 255, 255, 0.05);
+  --about-box-hover: rgba(0, 123, 255, 0.1);
+  --about-contact-link: #40c4ff;
+  --about-white: rgba(40, 40, 40, 0.95);
+  --about-value-title: #4dabf7;
+}
+
 .about {
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
-  color: #1e3d59;
+  background: var(--about-bg-light);
+  color: var(--about-text);
   padding: 4rem 1rem;
   display: flex;
   justify-content: center;
 
   .container {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--about-white);
     border-radius: 1rem;
     padding: 3rem 2rem;
     max-width: 800px;
@@ -20,19 +47,20 @@
     text-align: center;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: var(--about-heading);
   }
 
   .tagline {
     text-align: center;
     font-size: 1.2rem;
-    color: #4b6584;
+    color: var(--about-subtext);
     margin-bottom: 2rem;
     font-style: italic;
   }
 
   .about-content {
     font-size: 1.05rem;
-    color: #333;
+    color: var(--about-content);
     line-height: 1.7;
     margin-bottom: 2.5rem;
     text-align: justify;
@@ -43,30 +71,30 @@
       font-size: 2rem;
       margin-bottom: 1.5rem;
       text-align: center;
-      color: #0a3d62;
+      color: var(--about-heading);
     }
 
     .value-box {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: var(--about-box-bg);
       padding: 1.5rem;
       border-radius: 1rem;
       margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s;
 
       &:hover {
         transform: translateY(-5px);
-        background-color: rgba(72, 239, 239, 0.1);
+        background-color: var(--about-box-hover);
       }
 
       h3 {
         font-size: 1.25rem;
-        color: #2563eb;
+        color: var(--about-value-title);
         margin-bottom: 0.5rem;
       }
 
       p {
         font-size: 1rem;
-        color: #2d3436;
+        color: var(--about-content);
         line-height: 1.6;
       }
     }
@@ -78,14 +106,16 @@
     h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
+      color: var(--about-heading);
     }
 
     p {
       font-size: 1rem;
       line-height: 1.5;
+      color: var(--about-content);
 
       a {
-        color: #0984e3;
+        color: var(--about-contact-link);
         text-decoration: none;
 
         &:hover {
@@ -112,7 +142,6 @@
 // ==========================
 // ✅ Responsive Media Queries
 // ==========================
-
 @media (max-width: 768px) {
   .about {
     padding: 3rem 1rem;

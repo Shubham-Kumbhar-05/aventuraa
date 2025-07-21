@@ -1,7 +1,25 @@
+:root {
+  --contact-bg-light: #f9f9f9;
+  --contact-bg-dark: #1e1e1e;
+  --contact-subtext: #555;
+  --contact-input-bg: #fff;
+  --contact-input-border: #ccc;
+  --contact-info-bg: #fff;
+  --contact-info-text: #444;
+}
+
+body.dark {
+  --contact-bg-light: var(--contact-bg-dark);
+  --contact-subtext: #bbb;
+  --contact-input-bg: #2c2c2c;
+  --contact-input-border: #555;
+  --contact-info-bg: #2a2a2a;
+  --contact-info-text: #eee;
+}
 
 .contact {
   padding: 4rem 1rem;
-  background-color: #f9f9f9;
+  background-color: var(--contact-bg-light);
   animation: fadeIn 0.8s ease-in-out;
 
   .container {
@@ -19,7 +37,7 @@
   .subtitle {
     text-align: center;
     font-size: 1rem;
-    color: #555;
+    color: var(--contact-subtext);
     margin-bottom: 2.5rem;
     padding: 0 1rem;
   }
@@ -41,10 +59,11 @@
       input,
       textarea {
         padding: 1rem;
-        border: 1px solid #ccc;
+        border: 1px solid var(--contact-input-border);
         border-radius: 12px;
         font-size: 1rem;
-        background: #fff;
+        background: var(--contact-input-bg);
+        color: var(--textColor);
         transition: all 0.3s ease;
 
         &:focus {
@@ -81,7 +100,7 @@
         display: flex;
         align-items: flex-start;
         gap: 1rem;
-        background-color: white;
+        background-color: var(--contact-info-bg);
         padding: 1rem 1.2rem;
         border-radius: 14px;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
@@ -106,7 +125,7 @@
 
         p {
           margin: 0;
-          color: #444;
+          color: var(--contact-info-text);
           font-size: 0.95rem;
         }
       }
