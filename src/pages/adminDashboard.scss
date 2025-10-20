@@ -1,24 +1,320 @@
-/* adminDashboard.scss */
 .admin-dashboard {
   padding: 2rem;
-}
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  color: #222;
+  position: relative;
 
-.admin-dashboard h2 {
-  margin-top: 2rem;
-}
+  /* Header Section */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 
-.admin-dashboard table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #222;
+    }
 
-.admin-dashboard th, .admin-dashboard td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
+    /* Sign Out Button */
+    .signout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #e63946;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s ease-in-out;
 
-.admin-dashboard tr:nth-child(even) {
-  background-color: #f9f9f9;
+      &:hover {
+        background-color: #d62839;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+  }
+
+  /* Headings */
+  h2 {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    color: #333;
+  }
+
+  /* Table Section */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      font-size: 0.95rem;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #eef6ff;
+    }
+  }
+
+  /* Action Buttons */
+  .actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-start;
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      font-size: 0.85rem;
+    }
+
+    .edit-btn {
+      background-color: #4caf50;
+      color: white;
+
+      &:hover {
+        background-color: #43a047;
+      }
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+
+      &:hover {
+        background-color: #e53935;
+      }
+    }
+  }
+
+  /* Modal Styles */
+  .edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+
+    .edit-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+      h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+        color: #333;
+        text-align: center;
+      }
+
+      div {
+        margin-bottom: 1rem;
+
+        label {
+          display: block;
+          font-size: 0.9rem;
+          margin-bottom: 0.3rem;
+          color: #555;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 0.95rem;
+          transition: border 0.2s;
+
+          &:focus {
+            outline: none;
+            border-color: #007bff;
+          }
+        }
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.8rem;
+        margin-top: 1rem;
+
+        .save-btn {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+
+        .cancel-btn {
+          background-color: #ccc;
+          color: #333;
+          border: none;
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #aaa;
+          }
+        }
+      }
+    }
+  }
+
+  /* Responsive Table Wrapper */
+  section {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+
+    table {
+      min-width: 600px;
+    }
+  }
+
+  /* Empty and Loading Text */
+  .empty,
+  .loading-text {
+    color: #777;
+    font-style: italic;
+    margin-top: 0.8rem;
+    text-align: center;
+  }
+
+  /* ------------------------------
+     📱 Responsive Breakpoints
+  ------------------------------ */
+
+  @media (max-width: 992px) {
+    padding: 1.5rem;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    table th,
+    table td {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+
+    .actions button {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+    }
+
+    .signout-btn {
+      top: 15px;
+      right: 15px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .edit-modal .edit-form {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    section {
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      font-size: 0.85rem;
+    }
+
+    th,
+    td {
+      padding: 6px;
+    }
+
+    .actions {
+      flex-direction: column;
+      gap: 0.4rem;
+
+      button {
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 0.35rem 0.6rem;
+      }
+    }
+
+    .signout-btn {
+      top: 10px;
+      right: 10px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .edit-modal .edit-form {
+      padding: 1rem;
+      width: 90%;
+    }
+  }
 }
